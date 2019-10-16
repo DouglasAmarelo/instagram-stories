@@ -1,28 +1,32 @@
 import { data } from './_data.js';
 
-const $storiesCardList = document.querySelector('.stories-card-list');
+const $storiesCardList = $('.stories-card-list');
+const $storiesCardListItem = $('.stories-card-list__item');
+const $counter = $('.stories-card-list__counter');
+
 const $storiesPrev = document.querySelectorAll('.stories-prev');
 const $storiesNext = document.querySelectorAll('.stories-next');
 
-const windowWidth = $storiesCardList.clientWidth;
-$storiesCardList.setAttribute('data-position', '0');
+const timeToAnimate = 7000;
 
-$storiesPrev.forEach((item, index) => {
-	item.addEventListener('click', () => {
-		const currentPosition = $storiesCardList.getAttribute('data-position');
-		const newPosition = (Math.abs(currentPosition) - windowWidth);
 
-		$storiesCardList.style.transform = `translateX(-${newPosition}px)`;
-		$storiesCardList.setAttribute('data-position', `${newPosition}`);
-	});
+
+$storiesCardListItem.on('focus', function(e) {
+	e.preventDefault();
+
+	setInterval(() => {
+		console.log('Opa');
+	}, timeToAnimate);
+
 });
 
-$storiesNext.forEach((item, index) => {
-	item.addEventListener('click', () => {
-		const currentPosition = $storiesCardList.getAttribute('data-position');
-		const newPosition = (Math.abs(currentPosition) + windowWidth);
 
-		$storiesCardList.style.transform = `translateX(-${newPosition}px)`;
-		$storiesCardList.setAttribute('data-position', `${newPosition}`);
+$(document).ready(function() {
+	$('.stories-card-list').slick({
+		autoplay: true,
+		autoplaySpeed: timeToAnimate,
+		infinite: false,
+		nextArrow: $('.stories-next'),
+		prevArrow: $('.stories-prev'),
 	});
 });

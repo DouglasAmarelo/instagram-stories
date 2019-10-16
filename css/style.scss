@@ -107,29 +107,32 @@ body {
 		display: flex;
 		height: 100%;
 		left: 0;
-		// overflow: auto;
+		min-height: 100vh;
+		overflow: auto;
 		position: fixed;
 		top: 0;
-		width: 100%;
 		transition: transform .5s ease;
+		width: 100%;
+
+		* { outline: none!important; }
 
 		&__item {
-			border: 1px solid #d0d;
-			flex: 1 0 100%;
-			display: flex;
+			display: flex!important;
 			flex-direction: column;
+			flex: 1 0 100%;
 			justify-content: flex-start;
+			min-height: calc(100vh - 2em);
 			padding: 2em 4em;
 			position: relative;
 		}
 
 		// Actions
 		&__actions {
-			background-color: #ccc;
+			border: 3px solid #0dd;
 			width: 100%;
 
 			.stories-action {
-				background-color: #cccccc77;
+				background: transparent;
 				border: none;
 				color: transparent;
 				display: block;
@@ -141,13 +144,16 @@ body {
 				width: 4em;
 			}
 
-			.stories-prev {
-				left: 0;
-			}
+			.stories-prev { left: 0; }
 
-			.stories-next {
-				right: 0;
-			}
+			.stories-next { right: 0; }
+		}
+
+		// Contador
+		&__counter {
+			background-color: #d0d;
+			height: 10px;
+			width: 30%;
 		}
 
 		// Image
@@ -193,22 +199,19 @@ body {
 
 		// Comprar
 		&__cta {
-			// background-color: #9aca3c;
+			background-color: #fff;
 			border: 2px solid #9aca3c;
 			border-radius: 100px;
 			bottom: 1em;
 			color: #9aca3c;
-			display: inline-block;
+			display: block;
 			font-weight: bold;
-			left: 50%;
 			line-height: 16px;
-			margin: 1em 0;
+			margin: auto auto 1em auto;
 			padding: .8em 3em;
-			position: absolute;
 			text-align: center;
 			text-decoration: none;
-			transform: translateX(-50%);
-			width: calc(100% - 8em);
+			width: 100%;
 		}
 	}
 }
